@@ -1,31 +1,31 @@
-// Navigation
-document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section');
 
-    navLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
+        // Navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
 
-        // Hide all sections
-        sections.forEach(section => section.classList.remove('active'));
-
-        // Show the clicked section
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-          targetSection.classList.add('active');
-        }
-
-        // Update active link
-        navLinks.forEach(nav => nav.classList.remove('active'));
-        link.classList.add('active');
-
-        // Optional: scroll to top
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    });
-  });
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                
+                // Masquer toutes les sections
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Afficher la section cible
+                document.getElementById(targetId).classList.add('active');
+                
+                // Mettre à jour la navigation active
+                navLinks.forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                link.classList.add('active');
+                
+                // Scroll vers le haut
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
 
         // Animation des barres de compétences
         function animateSkillBars() {
@@ -56,24 +56,31 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Simulation d'envoi
+            // Récupérer les données du formulaire
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Créer le contenu de l'email
+            const emailSubject = `Contact Portfolio: ${subject}`;
+            const emailBody = `Nom: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            
+            // Ouvrir le client email avec les données pré-remplies
+            window.location.href = `mailto:yousfts10@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+            
+            // Animation de confirmation
             const submitBtn = document.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
             
-            submitBtn.textContent = 'Envoi en cours...';
-            submitBtn.disabled = true;
+            submitBtn.textContent = 'Email ouvert ! ✓';
+            submitBtn.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
             
             setTimeout(() => {
-                submitBtn.textContent = 'Message envoyé ! ✓';
-                submitBtn.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
-                
-                setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.background = 'linear-gradient(45deg, #d4af37, #b8941f)';
-                    this.reset();
-                }, 2000);
-            }, 2000);
+                submitBtn.textContent = originalText;
+                submitBtn.style.background = 'linear-gradient(45deg, #d4af37, #b8941f)';
+                this.reset();
+            }, 3000);
         });
 
         // Effet parallaxe léger pour les cartes
@@ -137,4 +144,3 @@ document.addEventListener('DOMContentLoaded', () => {
                 typeWriter(heroTitle, 'Younes Fartmis', 150);
             }
         });
-    
