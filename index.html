@@ -4,8 +4,514 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Younes Fartmis - Développeur Full-Stack & Expert SEO</title>
-  <link rel="stylesheet" href="dev.css">
- <script src="dev.js"></script>
+    <meta name="description" content="Portfolio de Younes Fartmis, développeur full-stack et expert SEO. Spécialisé en PHP, Laravel, JavaScript, Vue.js, React.js et optimisation pour moteurs de recherche.">
+    <meta name="keywords" content="Younes Fartmis, développeur web, full-stack, SEO, PHP, Laravel, JavaScript, Vue.js, React.js, WordPress">
+    <meta name="author" content="Younes Fartmis">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.firasfeatures.info/">
+    <meta property="og:title" content="Younes Fartmis - Développeur Full-Stack & Expert SEO">
+    <meta property="og:description" content="Portfolio professionnel de Younes Fartmis. Développement web moderne et optimisation SEO.">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.firasfeatures.info/">
+    <meta property="twitter:title" content="Younes Fartmis - Développeur Full-Stack & Expert SEO">
+    <meta property="twitter:description" content="Portfolio professionnel de Younes Fartmis. Développement web moderne et optimisation SEO.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav li {
+            position: relative;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: #d4af37;
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d4af37;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 100px 2rem 2rem;
+            display: none;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Accueil */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #d4af37, #f4e4bc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #b0b0b0;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #d4af37, #b8941f);
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s both;
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        /* À propos */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .profile-card {
+            background: rgba(45, 45, 45, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid #8B4513;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, #d4af37, #8B4513);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #1a1a1a;
+            font-weight: bold;
+        }
+
+        .bio {
+            background: rgba(45, 45, 45, 0.6);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #d4af37;
+        }
+
+        /* Compétences */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(45, 45, 45, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid #8B4513;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+        }
+
+        .skill-category h3 {
+            color: #d4af37;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-bar {
+            margin: 1rem 0;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            background: rgba(139, 69, 19, 0.3);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #d4af37, #f4e4bc);
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        /* Expérience */
+        .timeline {
+            position: relative;
+            margin: 2rem auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #d4af37, #8B4513);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .timeline-content {
+            background: rgba(45, 45, 45, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            width: 45%;
+            position: relative;
+            border: 1px solid #8B4513;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+            margin-right: 55%;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 55%;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: #d4af37;
+            border-radius: 50%;
+            border: 4px solid #1a1a1a;
+        }
+
+        .timeline-date {
+            color: #d4af37;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projets */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: rgba(45, 45, 45, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #8B4513;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: #d4af37;
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .project-header {
+            background: linear-gradient(45deg, #8B4513, #d4af37);
+            padding: 1.5rem;
+            color: #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: rgba(212, 175, 55, 0.2);
+            color: #d4af37;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid #d4af37;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info {
+            background: rgba(45, 45, 45, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid #8B4513;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(139, 69, 19, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #d4af37, #8B4513);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+
+        .contact-form {
+            background: rgba(45, 45, 45, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid #8B4513;
+        }
+
+        .form-group {
+            margin: 1rem 0;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #d4af37;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid #8B4513;
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #d4af37, #b8941f);
+            color: #1a1a1a;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #d4af37, #f4e4bc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 50px);
+                margin-left: 50px !important;
+                margin-right: 0 !important;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .project-header {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -27,7 +533,11 @@
                     <h1>Younes Fartmis</h1>
                     <p>Développeur Full-Stack & Expert SEO</p>
                     <p>Spécialisé en développement web moderne et optimisation pour moteurs de recherche</p>
-                    <a href="#contact" class="cta-button">Collaborons ensemble</a>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="mailto:yousfts10@gmail.com" class="cta-button">📧 Email</a>
+                        <a href="tel:+212602771424" class="cta-button">📱 Appeler</a>
+                        <a href="#contact" class="cta-button">💬 Contact</a>
+                    </div>
                 </div>
             </div>
             
@@ -283,7 +793,7 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-header">
-                        <h3">🪟 Fenêtres de Questembert</h3>
+                        <h3>🪟 Fenêtres de Questembert</h3>
                         <a href="https://www.fenetres-de-questembert.com/" target="_blank" style="color: #1a1a1a; text-decoration: none; font-size: 0.9rem;">↗ Voir le site</a>
                     </div>
                     <div class="project-content">
@@ -299,206 +809,8 @@
 
                 <div class="project-card">
                     <div class="project-header">
-                        <h3">🌿 G Services Paysage</h3>
+                        <h3>🌿 G Services Paysage</h3>
                         <a href="https://www.g-services-paysage.fr/" target="_blank" style="color: #1a1a1a; text-decoration: none; font-size: 0.9rem;">↗ Voir le site</a>
                     </div>
                     <div class="project-content">
-                        <p>Site web élégant pour une entreprise de paysagisme. Portfolio visuel attrayant, formulaires de contact optimisés et stratégie SEO pour générer des leads qualifiés.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">WordPress</span>
-                            <span class="tech-tag">Portfolio Visuel</span>
-                            <span class="tech-tag">Lead Generation</span>
-                            <span class="tech-tag">SEO</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>🏢 Sites Web Coachinglab</h3>
-                    </div>
-                    <div class="project-content">
-                        <p>Développement complet de deux sites web professionnels pour Coachinglab SARL : site principal et plateforme académique avec gestion de contenu avancée.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">HTML/CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">MySQL</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>📚 Bibliothèque Web (MVC)</h3>
-                    </div>
-                    <div class="project-content">
-                        <p>Développement d'une application web de gestion de bibliothèque utilisant l'architecture MVC et la programmation orientée objet en PHP.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">PHP OOP</span>
-                            <span class="tech-tag">MVC</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">Bootstrap</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>📝 Blog Laravel</h3>
-                    </div>
-                    <div class="project-content">
-                        <p>Création d'un blog complet avec Laravel incluant système d'authentification, gestion des articles, commentaires et optimisation SEO.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Laravel</span>
-                            <span class="tech-tag">Blade</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">SEO</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>💬 Forum Laravel & Vue.js</h3>
-                    </div>
-                    <div class="project-content">
-                        <p>Développement d'un forum interactif combinant Laravel pour le backend et Vue.js pour une interface utilisateur dynamique et réactive.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Laravel</span>
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">API REST</span>
-                            <span class="tech-tag">Real-time</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>🌐 Portfolio Vue.js</h3>
-                    </div>
-                    <div class="project-content">
-                        <p>Portfolio personnel développé avec Vue.js et HTML, mettant en avant les compétences en développement frontend et design responsive.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">Responsive</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3">🔧 Site Services Professionnels</h3>
-                    </div>
-                    <div class="project-content">
-                        <p>Création et référencement de sites web pour services professionnels (sg-plombier.be et autres) avec optimisation SEO locale et stratégie de conversion.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">WordPress</span>
-                            <span class="tech-tag">SEO Local</span>
-                            <span class="tech-tag">Conversion</span>
-                            <span class="tech-tag">Analytics</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3">🍽️ Site Web Restaurant</h3>
-                    </div>
-                    <div class="project-content">
-                        <p>Création d'un site web moderne pour restaurant avec système de réservation, menu interactif et optimisation SEO pour le référencement local.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">SEO Local</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Contactez-moi</h2>
-            
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3 style="color: #d4af37; margin-bottom: 2rem;">Restons en contact</h3>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">📧</div>
-                        <div>
-                            <h4>Email</h4>
-                            <p>Yousfts10@gmail.com</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">📱</div>
-                        <div>
-                            <h4>Téléphone</h4>
-                            <p>+212 6 02 77 14 24</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">💼</div>
-                        <div>
-                            <h4>LinkedIn</h4>
-                            <p>youness-fartmis-97a356216</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">🌍</div>
-                        <div>
-                            <h4>Localisation</h4>
-                            <p>Maroc</p>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(212, 175, 55, 0.1); border-radius: 10px; border-left: 4px solid #d4af37;">
-                        <h4 style="color: #d4af37; margin-bottom: 1rem;">Disponibilité</h4>
-                        <p>🟢 Disponible pour de nouveaux projets freelance</p>
-                        <p>🚀 Spécialisations : Développement Full-Stack, SEO & Marketing Digital</p>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <h3 style="color: #d4af37; margin-bottom: 2rem;">Envoyez-moi un message</h3>
-                    
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nom complet</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Sujet</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">Envoyer le message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-</body>
-</html>
+                        <p>Site web élégant pour une entreprise de paysagisme. Portfolio
