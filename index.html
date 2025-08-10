@@ -514,22 +514,27 @@
         </div>
     </section>
 <script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const targetID = this.getAttribute('href').substring(1);
-    const targetElement = document.getElementById(targetID);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
-      // Update URL hash without jumping
-      history.pushState(null, null, '#' + targetID);
+  function scrollToSectionFromHash() {
+  const hash = window.location.hash;
+  if (hash) {
+    const target = document.querySelector(hash);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
     }
-  });
-});
+  }
+}
+
+// Run on page load
+window.addEventListener('load', scrollToSectionFromHash);
+
+// Also run on hash change (if user clicks links that change hash)
+window.addEventListener('hashchange', scrollToSectionFromHash);
+
     </script>
 
 </body>
 </html>
+
 
 
 
