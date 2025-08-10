@@ -1,29 +1,87 @@
+// Fonction pour gérer l'URL au chargement de la page
+        function handleInitialHash() {
+            try {
+                const hash = window.location.hash;
+                if (hash) {
+                    const targetId = hash.substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        showSection(targetId);
+                        return;
+                    }
+                }
+            } catch (e) {
+                // Ignorer les erreurs de sécurité dans l'iframe
+                console.log('Hash navigation not available in iframe');
+            }
+            // Si pas de hash valide, afficher l'accueil
+            showSection('accueil');
+        }
+
+        // Gérer le changement d'URL (seulement si possible)
+        try {
+            window.addEventListener('hashchange', () => {
+                handleInitialHash();
+            });
+        } catch (e) {
+            // Ignorer si pas possible dans l'iframe
+        }
+
         // Navigation
         const navLinks = document.querySelectorAll('.nav-link');
         const sections = document.querySelectorAll('section');
 
+        function showSection(targetId) {
+            // Masquer toutes les sections
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Afficher la section cible
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Mettre à jour la navigation active
+            navLinks.forEach(navLink => {
+                navLink.classList.remove('active');
+            });
+            
+            // Activer le bon lien de navigation
+            const activeLink = document.querySelector(`[href="#${targetId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            // Scroll vers le haut
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Animer les compétences si on va sur cette section
+            if (targetId === 'competences') {
+                setTimeout(() => animateSkillBars(), 300);
+            }
+        }
+
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                const targetId = link.getAttribute('href').substring(1);
-                
-                // Masquer toutes les sections
-                sections.forEach(section => {
-                    section.classList.remove('active');
-                });
-                
-                // Afficher la section cible
-                document.getElementById(targetId).classList.add('active');
-                
-                // Mettre à jour la navigation active
-                navLinks.forEach(navLink => {
-                    navLink.classList.remove('active');
-                });
-                link.classList.add('active');
-                
-                // Scroll vers le haut
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    const targetId = href.substring(1);
+                    showSection(targetId);
+                }
             });
+        });
+
+        // Gérer aussi les liens internes (comme le bouton Contact dans la page d'accueil)
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a[href^="#"]');
+            if (link && !link.classList.contains('nav-link')) {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                showSection(targetId);
+            }
         });
 
         // Animation des barres de compétences
@@ -104,14 +162,10 @@
             });
         }
 
-        // Initialiser les animations
+        // Initialiser les animations et gérer l'URL au chargement
         document.addEventListener('DOMContentLoaded', () => {
             addFadeInAnimation();
-            
-            // Animation initiale des compétences si la section est visible
-            if (document.getElementById('competences').classList.contains('active')) {
-                animateSkillBars();
-            }
+            handleInitialHash(); // Gérer l'URL avec hash au chargement
         });
 
         // Effet de typing pour le titre principal
