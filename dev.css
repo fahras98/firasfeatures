@@ -95,9 +95,6 @@ html {
             position: relative;
         }
 
-      .hero-content {
-            z-index: 2;
-        }
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
@@ -493,6 +490,7 @@ html {
             }
         }
    
+
 
 
 
