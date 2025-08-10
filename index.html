@@ -35,7 +35,8 @@
                     <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                         <a href="mailto:yousfts10@gmail.com" class="cta-button">📧 Email</a>
                         <a href="tel:+212602771424" class="cta-button">📱 Appeler</a>
-                       <a id="#contact" class="cta-button">💬 Contact</a>
+                       <a href="https://www.firasfeatures.info/#contact" class="cta-button">💬 Contact</a>
+
                     </div>
                 </div>
             </div>
@@ -514,26 +515,22 @@
         </div>
     </section>
 <script>
-  function scrollToSectionFromHash() {
+ function scrollToHash() {
   const hash = window.location.hash;
   if (hash) {
-    const target = document.querySelector(hash);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
+    const el = document.querySelector(hash);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   }
 }
 
-// Run on page load
-window.addEventListener('load', scrollToSectionFromHash);
-
-// Also run on hash change (if user clicks links that change hash)
-window.addEventListener('hashchange', scrollToSectionFromHash);
+window.addEventListener('load', scrollToHash);
+window.addEventListener('hashchange', scrollToHash);
 
     </script>
 
 </body>
 </html>
+
 
 
 
