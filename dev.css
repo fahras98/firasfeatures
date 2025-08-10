@@ -132,6 +132,11 @@ html {
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
         }
+.LI-profile-badge {
+  display: block !important;
+  visibility: visible !important;
+}
+
 
         /* À propos */
         .about-grid {
@@ -480,4 +485,5 @@ html {
             }
         }
    
+
 
