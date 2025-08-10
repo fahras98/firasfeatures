@@ -89,19 +89,6 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    console.log('Formulaire détecté, écouteur attaché.');
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      console.log('Formulaire soumis, preventDefault appelé.');
-      // suite du code...
-    });
-  } else {
-    console.log('Formulaire non trouvé.');
-  }
-});
 
 
 // Effet parallaxe léger pour les cartes
@@ -165,5 +152,6 @@ window.addEventListener('load', () => {
     typeWriter(heroTitle, 'Younes Fartmis', 150);
   }
 });
+
 
 
