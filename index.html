@@ -537,10 +537,20 @@
 window.addEventListener('load', scrollToHash);
 window.addEventListener('hashchange', scrollToHash);
 
+  const websiteURL = "https://www.firasfeatures.info/"; // Replace with your URL
+
+  QRCode.toCanvas(document.getElementById('qrcode'), websiteURL, function (error) {
+    if (error) console.error(error);
+    else console.log('QR code generated!');
+  });
+
+
+
     </script>
 
 </body>
 </html>
+
 
 
 
