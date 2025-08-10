@@ -55,31 +55,24 @@
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Récupérer les données du formulaire
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            // Créer le contenu de l'email
-            const emailSubject = `Contact Portfolio: ${subject}`;
-            const emailBody = `Nom: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
-            
-            // Ouvrir le client email avec les données pré-remplies
-            window.location.href = `mailto:yousfts10@gmail.com?subject=${emailSubject}&body=${emailBody}`;
-            
-            // Animation de confirmation
+            // Simulation d'envoi
             const submitBtn = document.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
             
-            submitBtn.textContent = 'Email ouvert ! ✓';
-            submitBtn.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
+            submitBtn.textContent = 'Envoi en cours...';
+            submitBtn.disabled = true;
             
             setTimeout(() => {
-                submitBtn.textContent = originalText;
-                submitBtn.style.background = 'linear-gradient(45deg, #d4af37, #b8941f)';
-                this.reset();
-            }, 3000);
+                submitBtn.textContent = 'Message envoyé ! ✓';
+                submitBtn.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
+                
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.background = 'linear-gradient(45deg, #d4af37, #b8941f)';
+                    this.reset();
+                }, 2000);
+            }, 2000);
         });
 
         // Effet parallaxe léger pour les cartes
