@@ -95,22 +95,27 @@ html {
             position: relative;
         }
 
-    .hero-content div {
-    display: flex;
-    flex-direction: column; /* stack vertically */
-    gap: 0.8rem;            /* space between buttons */
-    align-items: center;    /* center them horizontally */
-}
+      .hero-content {
+            z-index: 2;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #b0b0b0;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
 
-.cta-button {
-    display: inline-block;
-    padding: 0.6rem 1.2rem;
-    background-color: #0073e6;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    white-space: nowrap;
-}
+        .cta-button {
+            display: flex; 
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #d4af37, #b8941f);
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
 
 
         .hero h1 {
@@ -488,6 +493,7 @@ html {
             }
         }
    
+
 
 
 
