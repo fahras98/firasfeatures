@@ -95,9 +95,23 @@ html {
             position: relative;
         }
 
-        .hero-content {
-            z-index: 2;
-        }
+    .hero-content div {
+    display: flex;
+    flex-direction: column; /* stack vertically */
+    gap: 0.8rem;            /* space between buttons */
+    align-items: center;    /* center them horizontally */
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: #0073e6;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
 
         .hero h1 {
             font-size: 3rem;
@@ -116,19 +130,7 @@ html {
             animation: fadeInUp 1s ease 0.3s both;
         }
 
-.cta-button {
-    display: inline-block;
-    padding: 0.6rem 1.2rem;
-    background-color: #0073e6;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    white-space: nowrap;       /* Prevents text from wrapping */
-    max-width: 150px;          /* Limits button length */
-    text-align: center;        /* Centers the text inside */
-    overflow: hidden;          /* Ensures text doesn't spill out */
-    text-overflow: ellipsis;   /* Adds ... if text is too long */
-}
+
 
 
         .cta-button:hover {
@@ -486,6 +488,7 @@ html {
             }
         }
    
+
 
 
 
