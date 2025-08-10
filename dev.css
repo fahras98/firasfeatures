@@ -102,6 +102,10 @@ html {
             animation: fadeInUp 1s ease 0.3s both;
         }
 
+      .hero-content {
+            z-index: 2;
+        }
+
         .cta-button {
             display: flex; 
             padding: 1rem 2rem;
@@ -490,6 +494,7 @@ html {
             }
         }
    
+
 
 
 
