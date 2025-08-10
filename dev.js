@@ -63,7 +63,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   submitBtn.textContent = 'Envoi en cours...';
   submitBtn.disabled = true;
 
-  emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+  emailjs.sendForm('service_80p873w', 'template_pzr3kgo', this)
     .then(() => {
       submitBtn.textContent = 'Message envoyé ! ✓';
       submitBtn.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
@@ -150,3 +150,4 @@ window.addEventListener('load', () => {
     typeWriter(heroTitle, 'Younes Fartmis', 150);
   }
 });
+
