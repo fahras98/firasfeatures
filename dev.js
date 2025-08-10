@@ -197,3 +197,17 @@ window.addEventListener('load', () => {
     typeWriter(heroTitle, 'Younes Fartmis', 150);
   }
 });
+
+
+ function scrollToHash() {
+  const hash = window.location.hash;
+  if (hash) {
+    const el = document.querySelector(hash);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+window.addEventListener('load', scrollToHash);
+window.addEventListener('hashchange', scrollToHash);
+
+
