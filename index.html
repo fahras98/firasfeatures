@@ -8,13 +8,12 @@
     <title>Younes Fartmis - Développeur Full-Stack & Expert SEO</title>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>emailjs.init("x-KgpXdj8_XnLg7oJ");</script>
-    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 
     <!-- Google Search Console verification -->
 <meta name="google-site-verification" content="1mMHdPEUg9L8nNK9llupi-H3-etgnoD7r2p0vcMe-qk" />    
 </head>
 <body>
-                <div id="qrcode"></div>
+              
 
     <!-- Navigation -->
     <nav>
@@ -537,12 +536,6 @@
 window.addEventListener('load', scrollToHash);
 window.addEventListener('hashchange', scrollToHash);
 
-  const websiteURL = "https://www.firasfeatures.info/"; // Replace with your URL
-
-  QRCode.toCanvas(document.getElementById('qrcode'), websiteURL, function (error) {
-    if (error) console.error(error);
-    else console.log('QR code generated!');
-  });
 
 
 
@@ -550,6 +543,7 @@ window.addEventListener('hashchange', scrollToHash);
 
 </body>
 </html>
+
 
 
 
