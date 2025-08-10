@@ -54,41 +54,64 @@ sections.forEach(section => {
 });
 
 // Gestion du formulaire de contact avec EmailJS integration
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
+// Make sure this runs after DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM loaded'); // Debug log
+  
+  const contactForm = document.getElementById('contactForm');
+  console.log('Form found:', contactForm); // Debug log
+  
+  if (!contactForm) {
+    console.error('Contact form not found!');
+    return;
+  }
 
-  const submitBtn = document.querySelector('.submit-btn');
-  const originalText = submitBtn.textContent;
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault(); // This is crucial!
+    console.log('Form submission prevented'); // Debug log
 
-  submitBtn.textContent = 'Envoi en cours...';
-  submitBtn.disabled = true;
+    // Check if EmailJS is loaded
+    if (typeof emailjs === 'undefined') {
+      console.error('EmailJS not loaded!');
+      alert('Service de messagerie indisponible. Veuillez réessayer plus tard.');
+      return false;
+    }
 
-  emailjs.sendForm('service_80p873w', 'template_pzr3kgo', this)
-    .then(() => {
-      submitBtn.textContent = 'Message envoyé ! ✓';
-      submitBtn.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
+    const submitBtn = this.querySelector('.submit-btn');
+    const originalText = submitBtn.textContent;
 
-      setTimeout(() => {
-        submitBtn.textContent = originalText;
+    submitBtn.textContent = 'Envoi en cours...';
+    submitBtn.disabled = true;
+
+    // Use your EmailJS service
+    emailjs.sendForm('service_80p873w', 'template_pzr3kgo', this)
+      .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+        submitBtn.textContent = 'Message envoyé ! ✓';
+        submitBtn.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
+
+        setTimeout(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+          submitBtn.style.background = 'linear-gradient(45deg, #d4af37, #b8941f)';
+          contactForm.reset();
+        }, 2000);
+      })
+      .catch(function(error) {
+        console.log('FAILED...', error);
+        submitBtn.textContent = 'Erreur lors de l\'envoi. Réessayez.';
         submitBtn.disabled = false;
-        submitBtn.style.background = 'linear-gradient(45deg, #d4af37, #b8941f)';
-        this.reset();
-      }, 2000);
-    })
-    .catch((error) => {
-      submitBtn.textContent = 'Erreur lors de l’envoi. Réessayez.';
-      submitBtn.disabled = false;
-      submitBtn.style.background = 'linear-gradient(45deg, #d32f2f, #b71c1c)'; // red-ish
+        submitBtn.style.background = 'linear-gradient(45deg, #d32f2f, #b71c1c)';
 
-      console.error('EmailJS error:', error);
+        setTimeout(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.style.background = 'linear-gradient(45deg, #d4af37, #b8941f)';
+        }, 3000);
+      });
 
-      setTimeout(() => {
-        submitBtn.textContent = originalText;
-        submitBtn.style.background = 'linear-gradient(45deg, #d4af37, #b8941f)';
-      }, 3000);
-    });
+    return false; // Extra prevention
+  });
 });
-
 
 
 // Effet parallaxe léger pour les cartes
@@ -152,6 +175,7 @@ window.addEventListener('load', () => {
     typeWriter(heroTitle, 'Younes Fartmis', 150);
   }
 });
+
 
 
 
