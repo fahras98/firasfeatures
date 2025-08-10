@@ -1,87 +1,29 @@
-// Fonction pour gérer l'URL au chargement de la page
-        function handleInitialHash() {
-            try {
-                const hash = window.location.hash;
-                if (hash) {
-                    const targetId = hash.substring(1);
-                    const targetSection = document.getElementById(targetId);
-                    if (targetSection) {
-                        showSection(targetId);
-                        return;
-                    }
-                }
-            } catch (e) {
-                // Ignorer les erreurs de sécurité dans l'iframe
-                console.log('Hash navigation not available in iframe');
-            }
-            // Si pas de hash valide, afficher l'accueil
-            showSection('accueil');
-        }
-
-        // Gérer le changement d'URL (seulement si possible)
-        try {
-            window.addEventListener('hashchange', () => {
-                handleInitialHash();
-            });
-        } catch (e) {
-            // Ignorer si pas possible dans l'iframe
-        }
-
-        // Navigation
+ // Navigation
         const navLinks = document.querySelectorAll('.nav-link');
         const sections = document.querySelectorAll('section');
-
-        function showSection(targetId) {
-            // Masquer toutes les sections
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Afficher la section cible
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
-            
-            // Mettre à jour la navigation active
-            navLinks.forEach(navLink => {
-                navLink.classList.remove('active');
-            });
-            
-            // Activer le bon lien de navigation
-            const activeLink = document.querySelector(`[href="#${targetId}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
-            
-            // Scroll vers le haut
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            // Animer les compétences si on va sur cette section
-            if (targetId === 'competences') {
-                setTimeout(() => animateSkillBars(), 300);
-            }
-        }
 
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                const href = link.getAttribute('href');
-                if (href && href.startsWith('#')) {
-                    const targetId = href.substring(1);
-                    showSection(targetId);
-                }
-            });
-        });
-
-        // Gérer aussi les liens internes (comme le bouton Contact dans la page d'accueil)
-        document.addEventListener('click', (e) => {
-            const link = e.target.closest('a[href^="#"]');
-            if (link && !link.classList.contains('nav-link')) {
-                e.preventDefault();
                 const targetId = link.getAttribute('href').substring(1);
-                showSection(targetId);
-            }
+                
+                // Masquer toutes les sections
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Afficher la section cible
+                document.getElementById(targetId).classList.add('active');
+                
+                // Mettre à jour la navigation active
+                navLinks.forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                link.classList.add('active');
+                
+                // Scroll vers le haut
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
 
         // Animation des barres de compétences
@@ -113,24 +55,31 @@
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Simulation d'envoi
+            // Récupérer les données du formulaire
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Créer le contenu de l'email
+            const emailSubject = `Contact Portfolio: ${subject}`;
+            const emailBody = `Nom: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            
+            // Ouvrir le client email avec les données pré-remplies
+            window.location.href = `mailto:yousfts10@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+            
+            // Animation de confirmation
             const submitBtn = document.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
             
-            submitBtn.textContent = 'Envoi en cours...';
-            submitBtn.disabled = true;
+            submitBtn.textContent = 'Email ouvert ! ✓';
+            submitBtn.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
             
             setTimeout(() => {
-                submitBtn.textContent = 'Message envoyé ! ✓';
-                submitBtn.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
-                
-                setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.background = 'linear-gradient(45deg, #d4af37, #b8941f)';
-                    this.reset();
-                }, 2000);
-            }, 2000);
+                submitBtn.textContent = originalText;
+                submitBtn.style.background = 'linear-gradient(45deg, #d4af37, #b8941f)';
+                this.reset();
+            }, 3000);
         });
 
         // Effet parallaxe léger pour les cartes
@@ -162,10 +111,14 @@
             });
         }
 
-        // Initialiser les animations et gérer l'URL au chargement
+        // Initialiser les animations
         document.addEventListener('DOMContentLoaded', () => {
             addFadeInAnimation();
-            handleInitialHash(); // Gérer l'URL avec hash au chargement
+            
+            // Animation initiale des compétences si la section est visible
+            if (document.getElementById('competences').classList.contains('active')) {
+                animateSkillBars();
+            }
         });
 
         // Effet de typing pour le titre principal
