@@ -464,6 +464,9 @@ html {
             .hero h1 {
                 font-size: 2rem;
             }
+                      .LI-profile-badge {
+    display: none !important;
+  }
 
             .about-grid,
             .contact-grid {
@@ -485,5 +488,6 @@ html {
             }
         }
    
+
 
 
