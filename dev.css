@@ -118,7 +118,7 @@ html {
 
         .cta-button {
             display: inline-block; 
-            
+            padding: 1rem 2rem;
             background: linear-gradient(45deg, #d4af37, #b8941f);
             color: #1a1a1a;
             text-decoration: none;
@@ -483,6 +483,7 @@ html {
             }
         }
    
+
 
 
 
