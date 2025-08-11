@@ -210,11 +210,8 @@ window.addEventListener('load', () => {
 window.addEventListener('load', scrollToHash);
 window.addEventListener('hashchange', scrollToHash);
 
-document.querySelectorAll('nav ul li a').forEach(link => {
-    link.addEventListener('click', () => {
-        document.querySelector('nav ul').classList.remove('show');
-    });
-});
+
+
 
 
 
