@@ -68,19 +68,7 @@ html {
         nav a:hover::after, nav a.active::after {
             width: 100%;
         }
-.hamburger {
-    display: none;
-    cursor: pointer;
-    flex-direction: column;
-    gap: 5px;
-}
 
-.hamburger span {
-    width: 25px;
-    height: 3px;
-    background: #e0e0e0;
-    border-radius: 2px;
-}
 
         /* Sections */
         section {
@@ -544,6 +532,7 @@ html {
             }
         }
    
+
 
 
 
