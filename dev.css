@@ -68,6 +68,19 @@ html {
         nav a:hover::after, nav a.active::after {
             width: 100%;
         }
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #e0e0e0;
+    border-radius: 2px;
+}
 
         /* Sections */
         section {
@@ -480,6 +493,32 @@ html {
         display: flex;
     }
 
+                     nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: rgba(26, 26, 26, 0.95);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+        border-top: 2px solid #d4af37;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
             .hero h1 {
                 font-size: 2rem;
             }
@@ -505,6 +544,7 @@ html {
             }
         }
    
+
 
 
 
