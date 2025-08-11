@@ -69,7 +69,6 @@ html {
             width: 100%;
         }
 
-
         /* Sections */
         section {
             min-height: 100vh;
@@ -481,32 +480,6 @@ html {
         display: flex;
     }
 
-                     nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    nav ul {
-        display: none;
-        flex-direction: column;
-        background: rgba(26, 26, 26, 0.95);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        padding: 1rem 0;
-        border-top: 2px solid #d4af37;
-    }
-
-    nav ul.show {
-        display: flex;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
             .hero h1 {
                 font-size: 2rem;
             }
@@ -532,9 +505,6 @@ html {
             }
         }
    
-
-
-
 
 
 
