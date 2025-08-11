@@ -14,21 +14,22 @@
 </head>
 <body>
     <script>
-        const navMenu = document.querySelector('nav ul');
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelectorAll('nav ul li a');
+       document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('nav ul');
+  const navLinks = document.querySelectorAll('nav ul li a');
 
-// Toggle menu when clicking hamburger
-hamburger.addEventListener('click', () => {
+  hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('show');
+  });
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('show');
+    });
+  });
 });
 
-// Close menu when clicking a link
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('show');
-    });
-});
     </script>
     <style>
         /* Hamburger button - hidden on desktop */
@@ -612,6 +613,7 @@ navLinks.forEach(link => {
 
 </body>
 </html>
+
 
 
 
