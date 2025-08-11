@@ -210,11 +210,23 @@ window.addEventListener('load', () => {
 window.addEventListener('load', scrollToHash);
 window.addEventListener('hashchange', scrollToHash);
 
-document.querySelectorAll('nav ul li a').forEach(link => {
+const navMenu = document.querySelector('nav ul');
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelectorAll('nav ul li a');
+
+// Toggle menu when clicking hamburger
+hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+});
+
+// Close menu when clicking a link
+navLinks.forEach(link => {
     link.addEventListener('click', () => {
-        document.querySelector('nav ul').classList.remove('show');
+        navMenu.classList.remove('show');
     });
 });
+
+
 
 
 
