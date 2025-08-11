@@ -210,4 +210,9 @@ window.addEventListener('load', () => {
 window.addEventListener('load', scrollToHash);
 window.addEventListener('hashchange', scrollToHash);
 
+document.querySelector('.hamburger').addEventListener('click', function() {
+    document.querySelector('nav ul').classList.toggle('show');
+});
+
+
 
