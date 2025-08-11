@@ -13,19 +13,69 @@
 
 </head>
 <body>
+    <style>
+        /* Hamburger button - hidden on desktop */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #e0e0e0;
+    border-radius: 2px;
+}
+
+/* Mobile dropdown */
+@media (max-width: 768px) {
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: rgba(26, 26, 26, 0.95);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+        border-top: 2px solid #d4af37;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+    </style>
               
+<!-- Navigation -->
+<nav>
+    <div class="hamburger" onclick="document.querySelector('nav ul').classList.toggle('show')">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <ul>
+        <li><a href="#acceuil" class="nav-link active">Accueil</a></li>
+        <li><a href="#competences" class="nav-link">Compétences</a></li>
+        <li><a href="#experience" class="nav-link">Expérience</a></li>
+        <li><a href="#projets" class="nav-link">Projets</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+</nav>
 
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="#acceuil" class="nav-link active">Accueil</a></li>
-            <li><a href="#competences" class="nav-link ">Compétences</a></li>
-            <li><a href="#experience" class="nav-link ">Expérience</a></li>
-            <li><a href="#projets" class="nav-link ">Projets</a></li>
-           <li> <a href="#contact" class="nav-link">Contact</a></li>
-
-        </ul>
-    </nav>
    
 
     <!-- Accueil -->
@@ -546,6 +596,7 @@
 
 </body>
 </html>
+
 
 
 
