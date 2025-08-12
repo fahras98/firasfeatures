@@ -111,22 +111,270 @@
         <a href="#contact" class="cta-button nav-link" style="display: block; width: 100%; max-width: 200px;">💬 Contact</a>
 </div>
  <div style="display: flex; justify-content: center; align-items: center; flex: 1 1 250px; max-width: 300px;">
-     
-  <!-- LinkedIn Badge -->
-        <div class="linkedin-container">
-            <div class="LI-profile-badge"
-                data-version="v1"
-                data-size="large"
-                data-locale="en_US"
-                data-type="horizontal"
-                data-theme="dark"
-                data-vanity="firasfeatures1010">
+     <style>
+         .badge-container {
+            perspective: 1000px;
+        }
+
+        .linkedin-badge {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            max-width: 350px;
+            text-align: center;
+            transform-style: preserve-3d;
+        }
+
+        .linkedin-badge:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.15);
+        }
+
+        .linkedin-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .linkedin-badge:hover::before {
+            left: 100%;
+        }
+
+        .badge-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .linkedin-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #0077b5, #005582);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .linkedin-badge:hover .linkedin-icon {
+            transform: rotateY(360deg);
+        }
+
+        .linkedin-icon::after {
+            content: 'in';
+            font-family: 'Arial', sans-serif;
+            font-style: italic;
+        }
+
+        .badge-content h2 {
+            color: #2c3e50;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .badge-content p {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .connect-button {
+            background: linear-gradient(135deg, #0077b5, #005582);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .connect-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .connect-button:hover::before {
+            left: 100%;
+        }
+
+        .connect-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 119, 181, 0.3);
+        }
+
+        .pulse-animation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120px;
+            height: 120px;
+            border: 2px solid #0077b5;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 2s infinite;
+            opacity: 0;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #0077b5;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 20%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 70%;
+            left: 80%;
+            animation-delay: 1s;
+        }
+
+        .floating-element:nth-child(3) {
+            top: 40%;
+            left: 10%;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 18px;
+            font-weight: bold;
+            color: #0077b5;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="badge-container">
+        <div class="linkedin-badge" onclick="openLinkedIn()">
+            <div class="pulse-animation"></div>
+            <div class="floating-elements">
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+            </div>
+            
+            <div class="badge-header">
+                <div class="linkedin-icon"></div>
+            </div>
+            
+            <div class="badge-content">
+                <h2>Let's Connect!</h2>
+                <p>Check out my professional profile and let's build something amazing together</p>
+                <a href="https://www.linkedin.com/in/firasfeatures1010/" target="_blank" class="connect-button">
+                    View Profile
+                </a>
+            </div>
+            
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Connections</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">Pro</span>
+                    <span class="stat-label">Level</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Opportunities</span>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
 
-    <!-- LinkedIn Badge Script -->
-    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>              
+
 </div>
 </div>
 
@@ -611,10 +859,69 @@
             </div>
         </div>
     </section>
-<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+<script>
+     function openLinkedIn() {
+            window.open('https://www.linkedin.com/in/firasfeatures1010/', '_blank');
+        }
+
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const badge = document.querySelector('.linkedin-badge');
+            const pulseAnimation = document.querySelector('.pulse-animation');
+            
+            badge.addEventListener('mouseenter', function() {
+                pulseAnimation.style.animation = 'pulse 1s infinite';
+            });
+            
+            badge.addEventListener('mouseleave', function() {
+                pulseAnimation.style.animation = 'pulse 2s infinite';
+            });
+        });
+
+        // Add click ripple effect
+        document.querySelector('.linkedin-badge').addEventListener('click', function(e) {
+            const ripple = document.createElement('div');
+            const rect = this.getBoundingClientRect();
+            const size = 100;
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                background: rgba(0, 119, 181, 0.3);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.6s ease-out;
+                left: ${x}px;
+                top: ${y}px;
+                pointer-events: none;
+            `;
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+        
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(3);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+</script>
 
 </body>
 </html>
+
 
 
 
