@@ -516,19 +516,23 @@ html {
     max-width: 100%;             /* carte prend toute la largeur disponible */
     width: 100%;                
   }
-                    .contact-grid {
-    grid-template-columns: 1fr;
+                    
+
+.contact-grid {
+    grid-template-columns: 1fr;  /* passe à une colonne unique */
     gap: 2rem;
-    padding: 0 1rem;
+    padding: 0 1rem;             /* pour respirer sur petits écrans */
     max-width: 100%;
     margin: 0 auto;
   }
+  
   .contact-info,
   .contact-form {
-    width: 100%;
+    width: 100%;                /* prend toute la largeur possible */
   }
         }
    
+
 
 
 
