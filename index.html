@@ -64,6 +64,159 @@
 });
 
     </script>
+     <script>
+        // Neural Network Generator
+        function createNeuralNetwork() {
+            const container = document.getElementById('neuralNetwork');
+            const neurons = [];
+            const connections = [];
+            
+            // Create neurons
+            for (let i = 0; i < 15; i++) {
+                const neuron = document.createElement('div');
+                neuron.className = 'neuron';
+                neuron.style.left = Math.random() * 100 + '%';
+                neuron.style.top = Math.random() * 100 + '%';
+                neuron.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(neuron);
+                neurons.push(neuron);
+            }
+            
+            // Create connections between neurons
+            for (let i = 0; i < neurons.length; i++) {
+                for (let j = i + 1; j < neurons.length; j++) {
+                    if (Math.random() < 0.3) { // 30% chance of connection
+                        const connection = document.createElement('div');
+                        connection.className = 'connection';
+                        
+                        const rect1 = neurons[i].getBoundingClientRect();
+                        const rect2 = neurons[j].getBoundingClientRect();
+                        
+                        const x1 = parseFloat(neurons[i].style.left);
+                        const y1 = parseFloat(neurons[i].style.top);
+                        const x2 = parseFloat(neurons[j].style.left);
+                        const y2 = parseFloat(neurons[j].style.top);
+                        
+                        const distance = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+                        const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+                        
+                        connection.style.left = x1 + '%';
+                        connection.style.top = y1 + '%';
+                        connection.style.width = distance + '%';
+                        connection.style.transform = `rotate(${angle}deg)`;
+                        connection.style.animationDelay = Math.random() * 4 + 's';
+                        
+                        container.appendChild(connection);
+                    }
+                }
+            }
+        }
+
+        // Hexagonal Matrix Generator
+        function createHexMatrix() {
+            const container = document.getElementById('hexMatrix');
+            
+            for (let layer = 0; layer < 2; layer++) {
+                const hexLayer = document.createElement('div');
+                hexLayer.className = 'hex-layer';
+                
+                for (let i = 0; i < 20; i++) {
+                    const hex = document.createElement('div');
+                    hex.className = 'hexagon';
+                    hex.style.left = Math.random() * 100 + '%';
+                    hex.style.top = Math.random() * 100 + '%';
+                    hex.style.animationDelay = Math.random() * 8 + 's';
+                    hexLayer.appendChild(hex);
+                }
+                
+                container.appendChild(hexLayer);
+            }
+        }
+
+        // Data Streams Generator
+        function createDataStreams() {
+            const container = document.getElementById('dataStreams');
+            
+            for (let i = 0; i < 12; i++) {
+                const column = document.createElement('div');
+                column.className = 'data-column';
+                column.style.left = Math.random() * 100 + '%';
+                column.style.animationDelay = Math.random() * 4 + 's';
+                column.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                container.appendChild(column);
+            }
+        }
+
+        // Kaleidoscope Generator
+        function createKaleidoscope() {
+            const container = document.getElementById('kaleidoscope');
+            
+            for (let i = 0; i < 36; i++) {
+                const element = document.createElement('div');
+                element.className = 'kaleido-element';
+                element.style.transform = `rotate(${i * 10}deg)`;
+                element.style.animationDelay = (i * 0.05) + 's';
+                element.style.opacity = Math.random() * 0.8 + 0.2;
+                container.appendChild(element);
+            }
+        }
+
+        // Quantum Particles Generator
+        function createQuantumField() {
+            const container = document.getElementById('quantumField');
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'quantum-particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Mouse Interaction
+        document.addEventListener('mousemove', function(e) {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            // Affect liquid blobs
+            const blobs = document.querySelectorAll('.liquid-blob');
+            blobs.forEach((blob, index) => {
+                const speed = (index + 1) * 0.5;
+                const x = (mouseX - 0.5) * speed * 30;
+                const y = (mouseY - 0.5) * speed * 30;
+                blob.style.transform = `translate(${x}px, ${y}px)`;
+            });
+            
+            // Affect spiral
+            const spiral = document.querySelector('.fractal-spiral');
+            const rotation = mouseX * 360;
+            spiral.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+        });
+
+        // Initialize all effects
+        document.addEventListener('DOMContentLoaded', function() {
+            createNeuralNetwork();
+            createHexMatrix();
+            createDataStreams();
+            createKaleidoscope();
+            createQuantumField();
+        });
+
+        // Dynamic Performance Optimization
+        let isVisible = true;
+        document.addEventListener('visibilitychange', function() {
+            isVisible = !document.hidden;
+            const background = document.querySelector('.animated-background');
+            if (!isVisible) {
+                background.style.animationPlayState = 'paused';
+            } else {
+                background.style.animationPlayState = 'running';
+            }
+        });
+    </script>
     <style>
         /* Hamburger button - hidden on desktop */
 .hamburger {
@@ -951,6 +1104,7 @@
 
 </body>
 </html>
+
 
 
 
