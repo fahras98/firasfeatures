@@ -505,8 +505,20 @@ html {
             .timeline-dot {
                 left: 20px;
             }
+                    .projects-grid {
+    grid-template-columns: 1fr;  /* une seule colonne sur mobile/tablette */
+    padding: 0 1rem;              /* un peu de marge horizontale */
+    max-width: 100%;             /* pour ne pas dépasser la largeur écran */
+    margin: 0 auto;              /* centrer horizontalement */
+  }
+
+  .project-card {
+    max-width: 100%;             /* carte prend toute la largeur disponible */
+    width: 100%;                
+  }
         }
    
+
 
 
 
