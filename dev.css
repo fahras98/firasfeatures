@@ -290,54 +290,153 @@ html {
         }
 
         /* Projets */
+/* Projects Section - Fixed for Mobile */
 .projects-grid {
-           display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Responsive grid */
+    gap: 2rem;
+    padding: 0 1rem;
+    margin: 2rem auto 0;
+    max-width: 1200px; /* Prevent too wide on large screens */
 }
 
+.project-card {
+    background: rgba(45, 45, 45, 0.8);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #8B4513;
+    transition: all 0.3s ease;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
 
-        .project-card {
-            background: rgba(45, 45, 45, 0.8);
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid #8B4513;
-            transition: all 0.3s ease;
-            position: relative;
-        }
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: #d4af37;
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+}
 
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: #d4af37;
-            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
-        }
+.project-header {
+    background: linear-gradient(45deg, #8B4513, #d4af37);
+    padding: 1.5rem;
+    color: #1a1a1a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
 
-        .project-header {
-            background: linear-gradient(45deg, #8B4513, #d4af37);
-            padding: 1.5rem;
-            color: #1a1a1a;
-        }
+.project-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    flex: 1;
+    min-width: 200px; /* Prevent title from being too compressed */
+}
 
-        .project-content {
-            padding: 2rem;
-        }
+.project-header a {
+    color: #1a1a1a !important;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+    background: rgba(26, 26, 26, 0.1);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
 
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
+.project-header a:hover {
+    background: rgba(26, 26, 26, 0.2);
+    transform: translateY(-2px);
+}
 
-        .tech-tag {
-            background: rgba(212, 175, 55, 0.2);
-            color: #d4af37;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            border: 1px solid #d4af37;
-        }
+.project-content {
+    padding: 2rem;
+    flex: 1; /* Fill remaining space */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    flex: 1; /* Push tech-tags to bottom */
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto; /* Push to bottom of card */
+}
+
+.tech-tag {
+    background: rgba(212, 175, 55, 0.2);
+    color: #d4af37;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid #d4af37;
+    white-space: nowrap;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+        margin: 1.5rem auto 0;
+    }
+    
+    .project-card {
+        max-width: 100%;
+        margin: 0; /* Remove any margins */
+    }
+    
+    .project-header {
+        padding: 1.2rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        text-align: left;
+    }
+    
+    .project-header h3 {
+        font-size: 1.1rem;
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .project-header a {
+        align-self: flex-end; /* Align link to the right */
+        font-size: 0.85rem;
+    }
+    
+    .project-content {
+        padding: 1.5rem;
+    }
+    
+    .project-content p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+    }
+    
+    .tech-tags {
+        gap: 0.4rem;
+    }
+    
+    .tech-tag {
+        font-size: 0.8rem;
+        padding: 0.25rem 0.6rem;
+    }
+}
+
 
         /* Contact */
         .contact-grid {
@@ -1034,6 +1133,7 @@ html {
     }
         }
    
+
 
 
 
