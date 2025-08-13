@@ -297,12 +297,15 @@ html {
         }
 
         /* Projets */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding: 0;
+  margin: 0 auto;
+}
+
 
         .project-card {
             background: rgba(45, 45, 45, 0.8);
@@ -516,6 +519,7 @@ html {
 
         }
    
+
 
 
 
