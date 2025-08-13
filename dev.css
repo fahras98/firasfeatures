@@ -291,12 +291,10 @@ html {
 
         /* Projets */
 .projects-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  padding: 0;
-  margin: 0 auto;
+           display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
 }
 
 
@@ -920,12 +918,7 @@ html {
             .timeline-dot {
                 left: 20px;
             }
-                    .projects-grid {
-    grid-template-columns: 1fr;  /* une seule colonne sur mobile/tablette */
-    padding: 0 1rem;              /* un peu de marge horizontale */
-    max-width: 100%;             /* pour ne pas dépasser la largeur écran */
-    margin: 0 auto;              /* centrer horizontalement */
-  }
+                  
 
   .project-card {
     max-width: 100%;             /* carte prend toute la largeur disponible */
@@ -961,6 +954,7 @@ html {
 
         }
    
+
 
 
 
