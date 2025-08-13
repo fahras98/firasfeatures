@@ -64,7 +64,43 @@ allSections.forEach(section => {
   observer.observe(section);
 });
 
+////////
+   document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('nav ul');
+  const navLinks = document.querySelectorAll('nav ul li a');
 
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+  });
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('show');
+    });
+  });
+});
+//
+
+   // Generate simple particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30; // Reduced count
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 8 + 10) + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', createParticles);
 // Gestion du formulaire de contact avec EmailJS integration
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM loaded'); // Debug log
@@ -209,6 +245,7 @@ window.addEventListener('load', () => {
 
 window.addEventListener('load', scrollToHash);
 window.addEventListener('hashchange', scrollToHash);
+
 
 
 
