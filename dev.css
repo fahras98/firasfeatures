@@ -114,7 +114,7 @@ html {
     align-items: center;    /* Added */
     justify-content: center; /* Added */
     padding: 1rem 2rem;
-    background: linear-gradient(45deg, #d4af37, #b8941f);
+    background: linear-gradient(45deg, #d4af37, #f4e4bc);
     color: #1a1a1a;
     text-decoration: none;
     border-radius: 50px;
@@ -1133,6 +1133,7 @@ html {
     }
         }
    
+
 
 
 
