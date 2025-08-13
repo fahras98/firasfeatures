@@ -115,7 +115,7 @@ html {
     justify-content: center; /* Added */
     padding: 1rem 2rem;
     background: linear-gradient(45deg, black, grey);
-    color: linear-gradient(45deg, #d4af37, #f4e4bc);
+    
     text-decoration: none;
     border-radius: 50px;
     font-weight: bold;
@@ -123,7 +123,9 @@ html {
     animation: fadeInUp 1s ease 0.6s both;
 }
 
-
+ .cta-button a {
+background: linear-gradient(45deg, #d4af37, #f4e4bc);
+ }
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
@@ -1133,6 +1135,7 @@ html {
     }
         }
    
+
 
 
 
