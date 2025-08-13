@@ -332,7 +332,7 @@ html {
 
 .project-header h3 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.8rem;
     flex: 1;
     min-width: 200px; /* Prevent title from being too compressed */
 }
@@ -1133,6 +1133,7 @@ html {
     }
         }
    
+
 
 
 
