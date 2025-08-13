@@ -133,7 +133,7 @@ html {
   position: relative;
 }
 
-.cta-button::before {
+.cta-button::after {
   content: attr(data-text); /* duplicate text for gradient */
   position: absolute;
   top: 0; left: 0;
@@ -1161,6 +1161,7 @@ html {
     }
         }
    
+
 
 
 
