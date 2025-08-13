@@ -110,43 +110,24 @@ html {
 
 .cta-button {
   display: flex;
-  align-items: center;          /* center icon + text vertically */
-  justify-content: center;      /* center horizontally */
-  gap: 0.5rem;                  /* space between emoji and text */
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   font-weight: bold;
-  text-decoration: none;
   border-radius: 8px;
   cursor: pointer;
 
-  /* Background gradient */
-  background: linear-gradient(45deg, #8B4513, #d4af37);
-  
+  background: linear-gradient(45deg, #8B4513, #d4af37); /* button bg */
+  color: white; /* fallback text color */
+
   /* Gradient text */
-  background-clip: text;
+  background: linear-gradient(45deg, #d4af37, #f4e4bc);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: transparent;
-
-  /* Trick: use pseudo-element for text gradient */
-  position: relative;
 }
 
-.cta-button::after {
-  content: attr(data-text); /* duplicate text for gradient */
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: linear-gradient(45deg, #d4af37, #f4e4bc); /* text gradient */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-}
 
 
 
@@ -1161,6 +1142,7 @@ html {
     }
         }
    
+
 
 
 
