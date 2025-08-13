@@ -24,6 +24,7 @@ html {
             top: 0;
             width: 100%;
             background: rgba(26, 26, 26, 0.95);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 2rem;
@@ -108,17 +109,19 @@ html {
             z-index: 2;
         }
 
-        .cta-button {
-            display: flex; 
-            padding: 1rem 2rem;
-            background: linear-gradient(45deg, #d4af37, #b8941f);
-            color: #1a1a1a;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease 0.6s both;
-        }
+     .cta-button {
+    display: inline-flex;  /* Changed from flex to inline-flex */
+    align-items: center;    /* Added */
+    justify-content: center; /* Added */
+    padding: 1rem 2rem;
+    background: linear-gradient(45deg, #d4af37, #b8941f);
+    color: #1a1a1a;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease 0.6s both;
+}
 
 
         .hero h1 {
@@ -130,16 +133,6 @@ html {
             background-clip: text;
             animation: fadeInUp 1s ease;
         }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: #b0b0b0;
-            animation: fadeInUp 1s ease 0.3s both;
-        }
-
-
-
 
         .cta-button:hover {
             transform: translateY(-3px);
@@ -968,6 +961,7 @@ html {
 
         }
    
+
 
 
 
