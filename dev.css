@@ -871,6 +871,8 @@ html {
 
         /* Responsive */
         @media (max-width: 768px) {
+
+                    
            nav ul {
         flex-direction: column;
         display: none;
@@ -955,10 +957,81 @@ html {
     .hamburger {
         display: flex;
     }
+
+                     .contact-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        gap: 1.5rem;
+        padding: 0 0.5rem; /* Reduce side padding on mobile */
+        max-width: 100%; /* Use full width on mobile */
+    }
+    
+    .contact-info,
+    .contact-form {
+        padding: 1.5rem; /* Reduce padding on mobile */
+        margin: 0; /* Remove any margins */
+    }
+    
+    .contact-item {
+        padding: 0.8rem;
+        margin: 0.8rem 0;
+        flex-direction: column; /* Stack icon and content vertically if needed */
+        text-align: center;
+    }
+    
+    .contact-item div {
+        margin-left: 0; /* Remove left margin on mobile */
+        margin-top: 0.5rem;
+    }
+    
+    .contact-icon {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Fix text overflow issues */
+    .contact-item div p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
+    .section-title {
+        font-size: 2rem; /* Reduce title size on mobile */
+        margin-bottom: 2rem;
+    }
+    
+    /* Ensure form elements don't cause horizontal scroll */
+    .form-group input,
+    .form-group textarea {
+        min-width: 0; /* Prevent min-width issues */
+        max-width: 100%;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .contact-info,
+    .contact-form {
+        padding: 1rem;
+    }
+    
+    .contact-item {
+        padding: 0.6rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+    }
                     
 
         }
    
+
 
 
 
