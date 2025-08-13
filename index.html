@@ -34,45 +34,7 @@
             <div class="wave"></div>
         </div>
     </div>
-    <script>
-       document.addEventListener('DOMContentLoaded', () => {
-  const hamburger = document.querySelector('.hamburger');
-  const navMenu = document.querySelector('nav ul');
-  const navLinks = document.querySelectorAll('nav ul li a');
 
-  hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('show');
-  });
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      navMenu.classList.remove('show');
-    });
-  });
-});
-
-    </script>
-      <script>
-           // Generate simple particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30; // Reduced count
-
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.animationDuration = (Math.random() * 8 + 10) + 's';
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', createParticles);
-    </script>
      <style>
         * {
             margin: 0;
@@ -1162,6 +1124,7 @@
 
 </body>
 </html>
+
 
 
 
