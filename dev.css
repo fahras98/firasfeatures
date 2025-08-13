@@ -1028,9 +1028,13 @@ html {
         font-size: 0.95rem;
     }
                     
-
+   .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(380px, 400px));
+        justify-content: center;
+    }
         }
    
+
 
 
 
