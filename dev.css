@@ -122,14 +122,6 @@ html {
 }
 
 
-.cta-button a {
-  background: linear-gradient(45deg, #d4af37, #f4e4bc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text; /* For Firefox */
-  text-decoration: none; /* optional */
-  display: inline-block; /* ensures gradient works properly */
-}
 
 
         .hero h1 {
@@ -1141,6 +1133,7 @@ html {
     }
         }
    
+
 
 
 
