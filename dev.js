@@ -21,22 +21,18 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const targetId = link.getAttribute('href').substring(1);
-      // Mise à jour du hash sans rechargement de la page
       window.location.hash = targetId;
       showSectionById(targetId);
     });
   });
 
-  // Au chargement, afficher la section correspondant au hash (sinon première section)
   const initialHash = window.location.hash.substring(1);
   if (initialHash && document.getElementById(initialHash)) {
     showSectionById(initialHash);
   } else {
-    // Si pas de hash valide, afficher la première section et activer premier lien
     showSectionById(sections[0].id);
   }
 });
-
 
 // Animation des barres de compétences
 function animateSkillBars() {
@@ -64,49 +60,49 @@ allSections.forEach(section => {
   observer.observe(section);
 });
 
-////////
-   document.addEventListener('DOMContentLoaded', () => {
+// Menu hamburger
+document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.querySelector('.hamburger');
   const navMenu = document.querySelector('nav ul');
   const navLinks = document.querySelectorAll('nav ul li a');
 
-  hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('show');
-  });
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      navMenu.classList.remove('show');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
     });
-  });
+  }
+
+  if (navLinks.length > 0 && navMenu) {
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('show');
+      });
+    });
+  }
 });
-//
 
-   // Generate simple particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30; // Reduced count
+// Particles
+function createParticles() {
+  const particlesContainer = document.getElementById('particles');
+  if (!particlesContainer) return;
+  const particleCount = 30;
 
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.animationDuration = (Math.random() * 8 + 10) + 's';
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.animationDelay = Math.random() * 15 + 's';
+    particle.style.animationDuration = (Math.random() * 8 + 10) + 's';
+    particlesContainer.appendChild(particle);
+  }
+}
+document.addEventListener('DOMContentLoaded', createParticles);
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', createParticles);
-// Gestion du formulaire de contact avec EmailJS integration
+// Gestion du formulaire de contact avec EmailJS
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM loaded'); // Debug log
-
+  console.log('DOM loaded');
   const contactForm = document.getElementById('contactForm');
-  console.log('Form found:', contactForm); // Debug log
+  console.log('Form found:', contactForm);
 
   if (!contactForm) {
     console.error('Contact form not found!');
@@ -162,65 +158,65 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+// LinkedIn badge hover
+document.addEventListener('DOMContentLoaded', function() {
+  const badge = document.querySelector('.linkedin-badge');
+  const pulseAnimation = document.querySelector('.pulse-animation');
 
-   function openLinkedIn() {
-            window.open('https://www.linkedin.com/in/firasfeatures1010/', '_blank');
-        }
+  if (badge && pulseAnimation) {
+    badge.addEventListener('mouseenter', function() {
+      pulseAnimation.style.animation = 'pulse 1s infinite';
+    });
 
-        // Add some interactive animations
-        document.addEventListener('DOMContentLoaded', function() {
-            const badge = document.querySelector('.linkedin-badge');
-            const pulseAnimation = document.querySelector('.pulse-animation');
-            
-            badge.addEventListener('mouseenter', function() {
-                pulseAnimation.style.animation = 'pulse 1s infinite';
-            });
-            
-            badge.addEventListener('mouseleave', function() {
-                pulseAnimation.style.animation = 'pulse 2s infinite';
-            });
-        });
+    badge.addEventListener('mouseleave', function() {
+      pulseAnimation.style.animation = 'pulse 2s infinite';
+    });
+  }
+});
 
-        // Add click ripple effect
-        document.querySelector('.linkedin-badge').addEventListener('click', function(e) {
-            const ripple = document.createElement('div');
-            const rect = this.getBoundingClientRect();
-            const size = 100;
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-            
-            ripple.style.cssText = `
-                position: absolute;
-                width: ${size}px;
-                height: ${size}px;
-                background: rgba(0, 119, 181, 0.3);
-                border-radius: 50%;
-                transform: scale(0);
-                animation: ripple 0.6s ease-out;
-                left: ${x}px;
-                top: ${y}px;
-                pointer-events: none;
-            `;
-            
-            this.appendChild(ripple);
-            
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-        });
-        
-        // Add ripple animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(3);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-// Effet parallaxe léger pour les cartes avec throttle pour meilleures performances
+// LinkedIn ripple click
+const linkedinBadgeClick = document.querySelector('.linkedin-badge');
+if (linkedinBadgeClick) {
+  linkedinBadgeClick.addEventListener('click', function(e) {
+    const ripple = document.createElement('div');
+    const rect = this.getBoundingClientRect();
+    const size = 100;
+    const x = e.clientX - rect.left - size / 2;
+    const y = e.clientY - rect.top - size / 2;
+
+    ripple.style.cssText = `
+      position: absolute;
+      width: ${size}px;
+      height: ${size}px;
+      background: rgba(0, 119, 181, 0.3);
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple 0.6s ease-out;
+      left: ${x}px;
+      top: ${y}px;
+      pointer-events: none;
+    `;
+
+    this.appendChild(ripple);
+
+    setTimeout(() => {
+      ripple.remove();
+    }, 600);
+  });
+}
+
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes ripple {
+    to {
+      transform: scale(3);
+      opacity: 0;
+    }
+  }
+`;
+document.head.appendChild(style);
+
+// Effet parallaxe
 let ticking = false;
 document.addEventListener('mousemove', (e) => {
   if (!ticking) {
@@ -240,8 +236,7 @@ document.addEventListener('mousemove', (e) => {
   }
 });
 
-
-// Animation d'entrée pour les éléments
+// Animation d'entrée
 function addFadeInAnimation() {
   const elements = document.querySelectorAll('.project-card, .skill-category, .timeline-item, .contact-item');
   elements.forEach((element, index) => {
@@ -257,18 +252,14 @@ function addFadeInAnimation() {
   });
 }
 
-// Initialiser les animations
 document.addEventListener('DOMContentLoaded', () => {
   addFadeInAnimation();
-
-  // Animation initiale des compétences si la section est visible
   if (document.getElementById('competences')?.classList.contains('active')) {
     animateSkillBars();
   }
 });
 
-
-// Effet de typing pour le titre principal
+// Effet typing
 function typeWriter(element, text, speed = 100) {
   let i = 0;
   element.textContent = '';
@@ -283,7 +274,6 @@ function typeWriter(element, text, speed = 100) {
   type();
 }
 
-// Lancer l'effet typing au chargement
 window.addEventListener('load', () => {
   const heroTitle = document.querySelector('.hero h1');
   if (heroTitle) {
@@ -291,26 +281,13 @@ window.addEventListener('load', () => {
   }
 });
 
-
- function scrollToHash() {
+// Scroll to hash
+function scrollToHash() {
   const hash = window.location.hash;
   if (hash) {
     const el = document.querySelector(hash);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   }
 }
-
 window.addEventListener('load', scrollToHash);
 window.addEventListener('hashchange', scrollToHash);
-
-
-
-
-
-
-
-
-
-
-
-
