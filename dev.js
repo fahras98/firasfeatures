@@ -291,3 +291,62 @@ function scrollToHash() {
 }
 window.addEventListener('load', scrollToHash);
 window.addEventListener('hashchange', scrollToHash);
+
+
+  // Create floating particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.width = Math.random() * 8 + 4 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.animationDuration = Math.random() * 5 + 10 + 's';
+            document.querySelector('.tech-background').appendChild(particle);
+            
+            setTimeout(() => particle.remove(), 15000);
+        }
+
+        setInterval(createParticle, 2000);
+
+        // Random glow effect
+        function addRandomGlow() {
+            const logos = document.querySelectorAll('.tech-logo');
+            const randomLogo = logos[Math.floor(Math.random() * logos.length)];
+            
+            randomLogo.classList.add('glow');
+            setTimeout(() => randomLogo.classList.remove('glow'), 3000);
+        }
+
+        setInterval(addRandomGlow, 4000);
+
+        // Gentle position drift
+        function drift() {
+            document.querySelectorAll('.tech-logo').forEach((logo, i) => {
+                const angle = (Date.now() / 50000 + i * 0.5) % (Math.PI * 2);
+                
+                const newX = Math.max(5, Math.min(90, 
+                    parseFloat(logo.style.left) + Math.sin(angle) * 0.1));
+                const newY = Math.max(5, Math.min(90, 
+                    parseFloat(logo.style.top) + Math.cos(angle) * 0.1));
+                
+                logo.style.left = newX + '%';
+                logo.style.top = newY + '%';
+            });
+        }
+
+        setInterval(drift, 100);
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('.nav a, .btn').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
