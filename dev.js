@@ -292,61 +292,32 @@ function scrollToHash() {
 window.addEventListener('load', scrollToHash);
 window.addEventListener('hashchange', scrollToHash);
 
+function addRandomGlow() {
+    const icons = document.querySelectorAll('.tech-icon');
+    const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+    
+    randomIcon.classList.add('tech-glow');
+    setTimeout(() => randomIcon.classList.remove('tech-glow'), 3000);
+}
 
-  // Create floating particles
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.width = Math.random() * 8 + 4 + 'px';
-            particle.style.height = particle.style.width;
-            particle.style.animationDuration = Math.random() * 5 + 10 + 's';
-            document.querySelector('.tech-background').appendChild(particle);
-            
-            setTimeout(() => particle.remove(), 15000);
-        }
+setInterval(addRandomGlow, 3000);
 
-        setInterval(createParticle, 2000);
+// Gentle drift animation
+function driftIcons() {
+    document.querySelectorAll('.tech-icon').forEach((icon, i) => {
+        const angle = (Date.now() / 40000 + i * 0.7) % (Math.PI * 2);
+        const drift = Math.sin(angle) * 0.5;
+        
+        const currentX = parseFloat(icon.style.left);
+        const currentY = parseFloat(icon.style.top);
+        
+        const newX = Math.max(3, Math.min(95, currentX + drift));
+        const newY = Math.max(3, Math.min(95, currentY + drift * 0.5));
+        
+        icon.style.left = newX + '%';
+        icon.style.top = newY + '%';
+    });
+}
 
-        // Random glow effect
-        function addRandomGlow() {
-            const logos = document.querySelectorAll('.tech-logo');
-            const randomLogo = logos[Math.floor(Math.random() * logos.length)];
-            
-            randomLogo.classList.add('glow');
-            setTimeout(() => randomLogo.classList.remove('glow'), 3000);
-        }
-
-        setInterval(addRandomGlow, 4000);
-
-        // Gentle position drift
-        function drift() {
-            document.querySelectorAll('.tech-logo').forEach((logo, i) => {
-                const angle = (Date.now() / 50000 + i * 0.5) % (Math.PI * 2);
-                
-                const newX = Math.max(5, Math.min(90, 
-                    parseFloat(logo.style.left) + Math.sin(angle) * 0.1));
-                const newY = Math.max(5, Math.min(90, 
-                    parseFloat(logo.style.top) + Math.cos(angle) * 0.1));
-                
-                logo.style.left = newX + '%';
-                logo.style.top = newY + '%';
-            });
-        }
-
-        setInterval(drift, 100);
-
-        // Smooth scroll for navigation
-        document.querySelectorAll('.nav a, .btn').forEach(link => {
-            link.addEventListener('click', (e) => {
-                const href = link.getAttribute('href');
-                if (href.startsWith('#')) {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
-            });
-        });
+setInterval(driftIcons, 200);
 
