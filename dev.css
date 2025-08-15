@@ -1167,7 +1167,8 @@ html {
     width: 100vw;
     height: 100vh;
     pointer-events: none;
-    z-index: -1;
+    z-index: -1; /* Behind all content */
+    overflow: hidden;
 }
 
 .tech-icon {
@@ -1179,12 +1180,12 @@ html {
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(15px);
-    border: 2px solid rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.1);
     cursor: pointer;
     pointer-events: auto;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: techFloat 6s ease-in-out infinite;
-    opacity: 0.6;
+    animation: techFloat 8s ease-in-out infinite;
+    opacity: 0.6; /* Subtle background effect */
 }
 
 .tech-icon:hover {
@@ -1285,6 +1286,7 @@ html {
     }
 }
    
+
 
 
 
