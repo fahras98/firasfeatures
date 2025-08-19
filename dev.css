@@ -90,11 +90,11 @@ html {
         /* Accueil */
         .hero {
             display: flex;
-          /*   align-items: center;
+            /* align-items: center;
             justify-content: center;
-            text-align: center;*/
+            text-align: center;
+            position: relative;*/
             min-height: 80vh;
-            position: relative;
         }
 
         .hero p {
@@ -1130,6 +1130,7 @@ html {
         justify-content: center;
     }
         }
+
 
 
 
