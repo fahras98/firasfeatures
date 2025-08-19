@@ -93,7 +93,8 @@ html {
             /* align-items: center;
             justify-content: center;
             text-align: center;
-            position: relative;*/
+            */
+            position: relative;
             min-height: 80vh;
         }
 
@@ -1130,6 +1131,7 @@ html {
         justify-content: center;
     }
         }
+
 
 
 
