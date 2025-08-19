@@ -90,10 +90,10 @@ html {
         /* Accueil */
         .hero {
             display: flex;
-            align-items: center;
+          /*   align-items: center;
             justify-content: center;
+            text-align: center;*/
             min-height: 80vh;
-            text-align: center;
             position: relative;
         }
 
@@ -1130,6 +1130,7 @@ html {
         justify-content: center;
     }
         }
+
 
 
 
