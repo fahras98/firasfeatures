@@ -292,32 +292,4 @@ function scrollToHash() {
 window.addEventListener('load', scrollToHash);
 window.addEventListener('hashchange', scrollToHash);
 
-function addRandomGlow() {
-    const icons = document.querySelectorAll('.tech-icon');
-    const randomIcon = icons[Math.floor(Math.random() * icons.length)];
-    
-    randomIcon.classList.add('tech-glow');
-    setTimeout(() => randomIcon.classList.remove('tech-glow'), 3000);
-}
-
-setInterval(addRandomGlow, 3000);
-
-// Gentle drift animation
-function driftIcons() {
-    document.querySelectorAll('.tech-icon').forEach((icon, i) => {
-        const angle = (Date.now() / 40000 + i * 0.7) % (Math.PI * 2);
-        const drift = Math.sin(angle) * 0.5;
-        
-        const currentX = parseFloat(icon.style.left);
-        const currentY = parseFloat(icon.style.top);
-        
-        const newX = Math.max(3, Math.min(95, currentX + drift));
-        const newY = Math.max(3, Math.min(95, currentY + drift * 0.5));
-        
-        icon.style.left = newX + '%';
-        icon.style.top = newY + '%';
-    });
-}
-
-setInterval(driftIcons, 200);
 
